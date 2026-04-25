@@ -223,3 +223,30 @@ function kirimKeWA() {
     window.open(url, '_blank').focus();
 }
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menu = document.querySelector('#mobile-menu');
+        const menuLinks = document.querySelector('#nav-menu');
+
+        // Cek di console log buat mastiin tombolnya ketemu
+        console.log("Menu Toggle:", menu); 
+        console.log("Nav Menu:", menuLinks);
+
+        if (menu) {
+            menu.addEventListener('click', function() {
+                // Toggle class aktif
+                menu.classList.toggle('is-active');
+                menuLinks.classList.toggle('active');
+            });
+        }
+
+        // Tutup menu otomatis kalau salah satu link diklik
+        const navItems = document.querySelectorAll('#nav-menu a');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                menu.classList.remove('is-active');
+                menuLinks.classList.remove('active');
+            });
+        });
+    });
+</script>
