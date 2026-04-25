@@ -24,6 +24,26 @@ nav {
     top: 0;
     z-index: 1000;
 }
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 1000; /* Pastikan tombol ada di lapisan paling atas */
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        display: none; /* Sembunyi default */
+        /* ... kode lainnya ... */
+        z-index: 999; /* Menu di bawah tombol dikit */
+    }
+
+    nav ul.active {
+        display: flex !important; /* Paksa muncul saat class active ada */
+    }
+}
 
 .logo {
     font-weight: bold;
