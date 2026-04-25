@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPMB - SMK MIHADUNAL ULA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+    <div class="logo">SMK MIHADUNAL ULA</div>
+    
+    <ul id="nav-menu">
+        <li><a href="#beranda">Beranda</a></li>
+        <li><a href="#prodi">Jurusan</a></li>
+        <li><a href="#alur">Alur</a></li>
+        <li><a href="#daftar" class="btn-daftar">Daftar Sekarang</a></li>
+    </ul>
+
+    <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+</nav>
+    <header id="beranda">
+    <div class="hero-panel panel-1"></div>
+    <div class="hero-panel panel-2"></div>
+    <div class="hero-panel panel-3"></div>
+
+    <div class="hero-content">
+        <h1>Wujudkan Masa Depan Digital Bersama Kami</h1>
+        <p>Pendaftaran Siswa Baru Tahun Ajaran 2026/2027 telah dibuka!</p>
+        <a href="#daftar" class="cta-button">Ambil Formulir</a>
+    </div>
+</header>
+
+    <section id="prodi" class="container">
+        <h2 class="section-title">Program Keahlian Unggulan</h2>
+        <div class="grid-jurusan">
+            <div class="card">
+                <div class="card-icon">💻</div>
+                <h3>PPLG</h3>
+                <p>(Pengembangan Perangkat Lunak & Gim)</p>
+                <small>Dahulu RPL. Fokus pada pemrograman, web, mobile apps, dan game development.</small>
+            </div>
+            <div class="card">
+                <div class="card-icon">🌐</div>
+                <h3>TJKT</h3>
+                <p>(Teknik Jaringan Komputer & Telekomunikasi)</p>
+                <small>Dahulu TKJ. Fokus pada infrastruktur jaringan, server, dan keamanan siber.</small>
+            </div>
+        </div>
+    </section>
+
+    <section id="alur" class="container">
+    <h2 class="section-title">Alur Pendaftaran 2026</h2>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="number">1</div>
+            <h3>Pendaftaran Online</h3>
+            <p>Klik tombol daftar dan kirim data diri melalui WhatsApp admin.</p>
+        </div>
+        <div class="timeline-item">
+            <div class="number">2</div>
+            <h3>Tes & Observasi</h3>
+            <p>Tes potensi akademik dan tes lisan (Baca Al-Qur'an & Keagamaan).</p>
+        </div>
+        <div class="timeline-item">
+            <div class="number">3</div>
+            <h3>Verifikasi Beasiswa</h3>
+            <p>Penentuan 20 santri terpilih yang mendapatkan beasiswa sampai lulus.</p>
+        </div>
+        <div class="timeline-item">
+            <div class="number">4</div>
+            <h3>Masuk Asrama</h3>
+            <p>Penyerahan berkas fisik dan mulai menempuh pendidikan di pesantren.</p>
+        </div>
+    </div>
+</section>
+
+    <section id="beasiswa" class="beasiswa-box">
+        <div class="beasiswa-bg-container">
+        <div class="bg-panel" style="background-image: url('img/kegiatan-1.jpeg');"></div>
+        <div class="bg-panel" style="background-image: url('img/masjid.jpeg');"></div>
+        <div class="bg-panel" style="background-image: url('img/kegiatan-2.jpeg');"></div>
+    </div>
+        <div class="beasiswa-content">
+            <span class="badge">Program Khusus</span>
+            <h2>Beasiswa Santri Berprestasi</h2>
+            <p>Dapatkan kesempatan pendidikan gratis <strong>sampai lulus</strong> untuk 20 santri terpilih!</p>
+            <div class="info-pesantren">
+                <p>📍 Pembinaan intensif berbasis Pesantren (Akhlak & Teknologi)</p>
+            </div>
+            <div class="kuota-container">
+                <div class="kuota-bar">
+                    <div class="kuota-fill" style="width: 30%;"></div>
+                </div>
+                <small>Sisa Kuota: <strong>Terbatas!</strong></small>
+            </div>
+            <a href="#daftar" class="btn-beasiswa">Cek Syarat Beasiswa</a>
+        </div>
+    </section>
+    <section id="daftar" class="container">
+        <div class="form-wrapper">
+            <div class="form-info">
+                <h2>Daftar Sekarang</h2>
+                <p>Isi data diri singkat untuk mengamankan kuota beasiswa 20 santri terpilih.</p>
+                <div class="kontak-person">
+                    <p><strong>Butuh Bantuan?</strong></p>
+                    <p>📞 WhatsApp: 0813-8481-4104 (Admin SPMB)</p>
+                    <p>📍 Alamat: Jl. Bojongsawah Kp. Tanjungsari Des. Bojongsawah Kec. Kebonpedes kab. Sukabumi Jawa Barat</p>
+                </div>
+            </div>
+
+           <form id="spmbForm" class="main-form">
+    <div class="input-group">
+        <label>Nama Lengkap</label>
+        <input type="text" id="nama" placeholder="Contoh: Imam Koswara" required>
+    </div>
+    <div class="input-group">
+        <label>Asal Sekolah</label>
+        <input type="text" id="sekolah_asal" placeholder="Nama Sekolah Asal" required>
+    </div>
+    <div class="input-group">
+        <label>Pilih Jurusan</label>
+        <select id="jurusan" required>
+            <option value="">-- Pilih Jurusan --</option>
+            <option value="PPLG (RPL)">PPLG (RPL)</option>
+            <option value="TJKT (TKJ)">TJKT (TKJ)</option>
+        </select>
+    </div>
+    <div class="input-group">
+        <label>Nomor WhatsApp Ortu/Wali</label>
+        <input type="tel" id="wa_ortu" placeholder="08..." required>
+    </div>
+    <button type="button" onclick="kirimKeWA()" class="btn-submit">Kirim via WhatsApp</button>
+</form>
+        </div>
+    </section>
+
+    <section id="lokasi" class="container">
+    <h2 class="section-title">Lokasi Kampus</h2>
+    <div class="map-wrapper">
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6660.743561185384!2d106.97895250075547!3d-6.949978163908565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6849b9b667be13%3A0xb7a1f91171ce9b81!2sSMK%20MIHADUNAL%20ULA%20SUKABUMI!5e0!3m2!1sen!2sus!4v1777039621198!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
+                width="100%" height="400" style="border:0; border-radius: 15px;" allowfullscreen="" loading="lazy">
+            </iframe>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <p>Jl. Bojongsawah Kp. Tanjungsari Des. Bojongsawah Kec. Kebonpedes kab. Sukabumi Jawa Barat</p>
+            <br>
+            <a href="https://maps.app.goo.gl/2wjZaB31zFMBaome8" target="_blank" class="btn-map">
+                📍 Buka di Google Maps (Navigasi)
+            </a>
+        </div>
+    </div>
+</section>
+
+    <a href="https://wa.me/6285717334108?text=Halo%20Admin%20SMK%20MIHADUNALULA,%20saya%20ingin%20tanya%20tentang%20SPMB" class="float-wa" target="_blank">
+        <span class="wa-text">Tanya Admin</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA">
+    </a>
+
+   <footer>
+    <div class="footer-content">
+        <h3>SMK MIHADUNAL ULA</h3>
+        <p>Mencetak Ahli Teknologi yang Berakhlak Santri.</p>
+        
+        <div class="social-media">
+            <a href="https://instagram.com/osis_smk_mihadunalula" target="_blank" class="ig-link">
+                📸 Follow us on Instagram: @osis_smk_mihadunalula
+            </a>
+        </div>
+
+        <p class="copyright">&copy; 2026 SMK MIHADUNAL ULA. All Rights Reserved.</p>
+    </div>
+</footer>
+</body>
+</html>
+<script>
+function kirimKeWA() {
+    // 1. Cek apakah user sudah pernah daftar di browser ini (Anti-Jahil)
+    const statusDaftar = localStorage.getItem('sudahDaftarSPMB');
+    if (statusDaftar === 'true') {
+        alert("Wah, kamu sudah mengirim data pendaftaran sebelumnya. Mohon tunggu balasan dari Admin di WhatsApp ya!");
+        return; 
+    }
+
+    // 2. Ambil data dari inputan
+    const nama = document.getElementById('nama').value;
+    const sekolah = document.getElementById('sekolah_asal').value;
+    const jurusan = document.getElementById('jurusan').value;
+    const waOrtu = document.getElementById('wa_ortu').value;
+
+    // 3. Validasi sederhana (Pastikan tidak kosong)
+    if (nama === "" || sekolah === "" || jurusan === "" || waOrtu === "") {
+        alert("Mohon lengkapi semua data pendaftaran ya!");
+        return;
+    }
+
+    // 4. Konfigurasi Nomor Admin & Pesan
+    const noAdmin = "6285717334108"; 
+    const pesan = "Halo Admin SMK MIHADUNAL ULA,%0A" + 
+                  "Saya ingin mendaftar SPMB.%0A%0A" +
+                  "*Data Calon Siswa dan Santri*%0A" +
+                  "---------------------------%0A" +
+                  "Nama: " + nama + "%0A" +
+                  "Asal Sekolah: " + sekolah + "%0A" +
+                  "Jurusan: " + jurusan + "%0A" +
+                  "WA Ortu: " + waOrtu + "%0A" +
+                  "---------------------------%0A" +
+                  "Mohon info langkah pendaftaran selanjutnya. Terima kasih!";
+
+    // 5. Tandai bahwa user ini sudah berhasil mendaftar (Simpan di memori browser)
+    localStorage.setItem('sudahDaftarSPMB', 'true');
+
+    // 6. Eksekusi buka WhatsApp
+    const url = "https://wa.me/" + noAdmin + "?text=" + pesan;
+    window.open(url, '_blank').focus();
+}
+</script>
