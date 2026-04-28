@@ -103,12 +103,13 @@ header {
 }
 
 .jargon {
+    display: block; /* Supaya tombol turun ke bawahnya */
     font-size: 1.2rem;
-    margin-bottom: 30px;
+    margin: 10px 0 20px 0; /* Kasih jarak atas bawah */
     font-style: italic;
+    color: #ffffff;
     opacity: 0.9;
 }
-
 /* Pastikan responsif di HP agar teks tidak kebesaran */
 @media (max-width: 768px) {
     header {
@@ -123,11 +124,20 @@ header {
     display: inline-block;
     margin-top: 20px;
     padding: 12px 30px;
-    background: #27ae60;
-    color: white;
-    text-decoration: none;
+    background-color: #27ae60 !important; /* Hijau mantap */
+    color: white !important; /* Paksa teks jadi putih */
+    text-decoration: none !important; /* Hapus garis bawah */
     border-radius: 30px;
     font-weight: bold;
+    z-index: 20; /* Supaya bisa diklik */
+    position: relative;
+    transition: 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #219150 !important;
+    transform: scale(1.05);
+}
 }
 .container {
     padding: 60px 10%;
