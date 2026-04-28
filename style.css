@@ -1,10 +1,6 @@
-/* =========================================
-   DASAR & RESET
-   ========================================= */
 html {
     scroll-behavior: smooth;
 }
-
 * {
     margin: 0;
     padding: 0;
@@ -15,17 +11,13 @@ html {
 body {
     background-color: #f4f7f6;
     color: #333;
-    line-height: 1.6;
 }
 
-/* =========================================
-   NAVIGASI (HEADER ATAS)
-   ========================================= */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 5%;
+    padding: 20px 5%;
     background: #fff;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     position: sticky;
@@ -37,121 +29,256 @@ nav {
     font-weight: bold;
     font-size: 1.5rem;
     color: #2c3e50;
-    text-decoration: none;
 }
 
 nav ul {
     display: flex;
     list-style: none;
-    align-items: center;
 }
 
 nav ul li {
-    margin-left: 25px;
+    margin-left: 20px;
 }
 
 nav ul li a {
     text-decoration: none;
     color: #555;
-    font-weight: 500;
     transition: 0.3s;
-}
-
-nav ul li a:hover {
-    color: #e67e22;
 }
 
 .btn-daftar {
-    background: #e67e22 !important;
+    background: #e67e22;
     color: white !important;
-    padding: 10px 20px;
+    padding: 8px 20px;
     border-radius: 5px;
-    font-weight: bold;
-}
-
-/* Menu Hamburger (Khusus HP) */
-.menu-toggle {
-    display: none;
-    cursor: pointer;
-    flex-direction: column;
-    gap: 5px;
-    z-index: 1100;
-}
-
-.bar {
-    width: 25px;
-    height: 3px;
-    background-color: #2c3e50;
-    transition: 0.3s;
 }
 
 /* =========================================
-   HERO SECTION (FOTO UTAMA)
+   Hero Section: Satu Foto Utama
    ========================================= */
 header {
     height: 85vh;
-    background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('img/sekolah.jpeg');
+    width: 100%;
+    /* Pastikan file ini ada di folder img kamu. Ganti 'sekolah.jpeg' sesuai nama filemu */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('img/sekolah.jpeg');
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+    
+    /* Mengatur konten ke tengah secara vertikal & horizontal */
     display: flex;
-    align-items: center; /* Ini yang bikin konten ke tengah vertikal */
-    justify-content: center; /* Ini yang bikin konten ke tengah horizontal */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     color: white;
+    position: relative;
+    padding: 0 5%;
 }
 
 .hero-content {
-    position: relative;
     z-index: 10;
+    width: 100%;
+    max-width: 800px;
 }
 
 .hero-content h1 {
     font-size: 3.5rem;
-    margin-bottom: 10px;
-    text-shadow: 2px 4px 10px rgba(0,0,0,0.4);
-    line-height: 1.2;
+    margin-bottom: 15px;
+    text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+    font-weight: bold;
 }
 
 .jargon {
     display: block;
-    font-size: 1.4rem;
-    margin: 15px 0 30px 0;
+    font-size: 1.5rem;
+    margin-bottom: 30px;
     font-style: italic;
-    color: #f1c40f; /* Kuning emas agar kontras */
-    font-weight: 300;
+    color: #f1c40f; /* Kuning emas agar kontras dengan foto */
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
 }
 
 .cta-button {
     display: inline-block;
-    padding: 15px 40px;
-    background-color: #27ae60 !important; /* Hijau */
+    padding: 15px 35px;
+    background-color: #27ae60 !important; /* Warna hijau tetap */
     color: white !important;
     text-decoration: none !important;
     border-radius: 50px;
     font-weight: bold;
     font-size: 1.1rem;
-    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
     transition: 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
 .cta-button:hover {
     background-color: #219150 !important;
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(39, 174, 96, 0.6);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
 }
 
-/* =========================================
-   SECTION BEASISWA (3 KOLOM STATIS)
-   ========================================= */
+/* Penyesuaian Responsif untuk HP */
+@media (max-width: 768px) {
+    header {
+        height: 70vh; /* Sedikit lebih pendek di HP */
+    }
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .jargon {
+        font-size: 1.1rem;
+    }
+}
+.container {
+    padding: 60px 10%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2rem;
+    color: #2c3e50;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: #e67e22;
+    margin: 10px auto;
+}
+
+/* Grid Jurusan */
+.grid-jurusan {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+/* Timeline Alur */
+.timeline {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.timeline-item {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+    position: relative;
+    padding: 20px;
+}
+
+.timeline-item .number {
+    width: 60px;
+    height: 60px;
+    background: #e67e22;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 auto 15px;
+    box-shadow: 0 4px 10px rgba(230, 126, 34, 0.4);
+}
+
+.timeline-item h3 {
+    margin-bottom: 10px;
+    color: #fff; /* Pastikan putih karena background section alur itu gelap */
+}
+
+.timeline-item p {
+    font-size: 0.9rem;
+    color: #ccc;
+    line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+    .timeline-item:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 50px;
+        right: -10px;
+        width: 30%;
+        height: 2px;
+        background: rgba(255,255,255,0.2);
+        z-index: 1;
+    }
+}
+
+/* Alur Pendaftaran */
+.alur-pendaftaran {
+    background: #2c3e50;
+    color: white;
+    padding: 60px 10%;
+}
+
+.alur-pendaftaran .section-title {
+    color: white;
+}
+
+.steps {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.step {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background: #e67e22;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 0 auto 15px;
+}
+/* Section Beasiswa */
+/* Section Beasiswa dengan Background Foto */
 .beasiswa-box {
     position: relative;
     padding: 100px 10%;
     color: white;
     text-align: center;
-    overflow: hidden;
-    min-height: 500px;
+    overflow: hidden; /* Supaya foto tidak keluar jalur */
 }
 
+/* Container untuk 3 foto latar belakang */
 .beasiswa-bg-container {
     position: absolute;
     top: 0;
@@ -159,50 +286,100 @@ header {
     width: 100%;
     height: 100%;
     display: flex;
-    z-index: 1;
+    z-index: 1; /* Di bawah teks */
 }
 
 .bg-panel {
+    flex: 1;
     height: 100%;
     background-size: cover;
     background-position: center;
+    /* Foto diam, tidak pakai fixed agar tidak bergerak saat scroll */
 }
 
-.panel-samping { flex: 1; }
-.panel-tengah { flex: 2; border-left: 1px solid rgba(255,255,255,0.1); border-right: 1px solid rgba(255,255,255,0.1); }
-
+/* Overlay Gradien Biru Premium yang menutupi ke-3 foto */
 .beasiswa-box::after {
     content: '';
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(135deg, rgba(30, 60, 114, 0.85) 0%, rgba(42, 82, 152, 0.85) 100%);
-    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(30, 60, 114, 0.9) 0%, rgba(42, 82, 152, 0.8) 100%);
+    z-index: 2; /* Di atas foto, di bawah teks */
 }
 
-.beasiswa-content { position: relative; z-index: 3; }
+.beasiswa-content {
+    position: relative;
+    z-index: 3; /* Pastikan teks paling atas */
+}
 
-/* =========================================
-   FORM & CONTAINER UMUM
-   ========================================= */
-.container { padding: 80px 10%; }
-
-.section-title {
-    text-align: center;
-    margin-bottom: 50px;
-    font-size: 2.2rem;
+.badge {
+    background: #f1c40f; /* Warna kuning emas */
     color: #2c3e50;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    text-transform: uppercase;
 }
 
-.section-title::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 4px;
-    background: #e67e22;
-    margin: 15px auto;
+.beasiswa-content h2 {
+    font-size: 2.5rem;
+    margin: 20px 0;
 }
 
-/* Form Styling */
+.info-pesantren {
+    background: rgba(255, 255, 255, 0.1);
+    display: inline-block;
+    padding: 15px 25px;
+    border-radius: 10px;
+    margin: 20px 0;
+    border: 1px dashed #f1c40f;
+}
+
+.kuota-container {
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+.kuota-bar {
+    width: 100%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.kuota-fill {
+    height: 100%;
+    background: #e74c3c; /* Warna merah untuk tanda bahaya/sedikit */
+    animation: loading 2s ease-out;
+}
+
+.btn-beasiswa {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 40px;
+    background: #f1c40f;
+    color: #2c3e50;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-beasiswa:hover {
+    background: #d4ac0d;
+    transform: scale(1.05);
+}
+
+@keyframes loading {
+    from { width: 0; }
+    to { width: 30%; }
+}
+/* Form Section */
 .form-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -212,76 +389,205 @@ header {
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
-.form-info { flex: 1; background: #2c3e50; color: white; padding: 40px; }
-.main-form { flex: 1.5; padding: 40px; }
+.form-info {
+    flex: 1;
+    background: #2c3e50;
+    color: white;
+    padding: 40px;
+    min-width: 300px;
+}
 
-.input-group { margin-bottom: 20px; }
-.input-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+.main-form {
+    flex: 1.5;
+    padding: 40px;
+    min-width: 300px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #444;
+}
+
 .input-group input, .input-group select {
-    width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
 }
 
 .btn-submit {
-    width: 100%; padding: 15px; background: #27ae60; color: white;
-    border: none; border-radius: 8px; font-weight: bold; cursor: pointer;
+    width: 100%;
+    padding: 15px;
+    background: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* =========================================
-   FOOTER & FLOATING WA
-   ========================================= */
+.btn-submit:hover {
+    background: #219150;
+}
+
+/* Footer */
 footer {
     text-align: center;
-    padding: 50px;
+    padding: 40px;
     background: #1a1a1a;
     color: #888;
+    font-size: 0.9rem;
+}
+/* Lokasi */
+.map-container {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    overflow: hidden;
 }
 
+.btn-map {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #2c3e50;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+    border: 2px solid #2c3e50;
+}
+
+.btn-map:hover {
+    background-color: white;
+    color: #2c3e50;
+}
+
+.map-wrapper {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* Floating WA */
 .float-wa {
     position: fixed;
-    bottom: 25px;
-    right: 25px;
+    bottom: 20px;
+    right: 20px;
     background-color: #25d366;
     color: white;
-    padding: 12px 25px;
+    padding: 10px 20px;
     border-radius: 50px;
     display: flex;
     align-items: center;
     text-decoration: none;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     z-index: 9999;
     transition: 0.3s;
 }
 
-/* =========================================
-   RESPONSIVE (HP MODE)
-   ========================================= */
+.float-wa img {
+    width: 30px;
+    margin-left: 10px;
+}
+
+.float-wa:hover {
+    transform: scale(1.1);
+    background-color: #128c7e;
+}
+
+.wa-text {
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* Styling Menu Hamburger */
+.menu-toggle {
+    display: none; /* Sembunyi di desktop */
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #2c3e50;
+    transition: 0.3s;
+}
+
+/* Responsive Mode (HP) */
 @media (max-width: 768px) {
-    .menu-toggle { display: flex !important; }
+    .menu-toggle {
+        display: flex; /* Muncul di HP */
+    }
 
     nav ul {
-        display: none;
+        display: none; /* Sembunyi secara default */
         flex-direction: column;
         position: absolute;
-        top: 100%;
+        top: 70px;
         left: 0;
         width: 100%;
         background-color: white;
-        padding: 30px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        padding: 20px;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
     }
 
-    nav ul.active { display: flex !important; }
-    nav ul li { margin: 15px 0; width: 100%; text-align: center; }
-    nav ul li { margin-left: 0; }
+    /* Class Aktif (Saat diklik) */
+    nav ul.active {
+        display: flex;
+    }
 
-    .hero-content h1 { font-size: 2.2rem; }
-    .jargon { font-size: 1.1rem; }
-    
-    .beasiswa-bg-container { flex-direction: column; }
-    .form-wrapper { flex-direction: column; }
-    
-    /* Animasi Tombol X */
+    nav ul li {
+        margin: 15px 0;
+        text-align: center;
+    }
+
+    /* Efek Animasi Tombol X saat diklik */
     .menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
     .menu-toggle.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+}
+    
+
+.social-media {
+    margin: 20px 0;
+}
+
+.ig-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: white !important;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.ig-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(220, 39, 67, 0.4);
+}
+
+.footer-content h3 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.copyright {
+    margin-top: 30px;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    color: #666;
 }
