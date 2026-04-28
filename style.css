@@ -75,46 +75,29 @@ nav ul li a {
 }
 
 /* Hero Section */
-/* Hero Section Opsi 1: Triple Split Screen */
+/* Hero Section */
+
 header {
+
     height: 80vh;
-    width: 100%;
-    display: flex; /* Mengatur foto agar berjejer ke samping */
-    position: relative;
-    overflow: hidden;
-}
 
-.hero-panel {
-    flex: 1; /* Membagi layar jadi 3 bagian sama besar */
-    height: 100%;
-    position: relative;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('img/smk.jpeg');
+
     background-size: cover;
+
     background-position: center;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
-}
-.panel-1, .panel-3 { 
-    flex: 1; 
-}
 
-/* Panel Tengah dibuat lebih besar (dominan) */
-.panel-2 { 
-    flex: 2; 
-    /* Opsional: Tambah garis halus agar pemisah antar foto terlihat profesional */
-    border-left: 1px solid rgba(255,255,255,0.2);
-    border-right: 1px solid rgba(255,255,255,0.2);
-}
-/* Memasang masing-masing foto bangunan */
-.panel-1 { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/bangunan-2.jpeg'); }
-.panel-2 { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/bangunan-1.jpeg'); }
-.panel-3 { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/bangunan-3.jpg'); }
+    text-align: center;
 
-/* Efek Interaktif: Bagian yang disentuh kursor akan melebar */
-/* .hero-panel:hover {
-    flex: 2; 
-    filter: brightness(1.1);
-} */
+    color: white;
+
+}
 
 /* Teks Utama Tetap Berada di Tengah (Melayang di atas 3 foto) */
 .hero-content {
