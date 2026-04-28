@@ -209,7 +209,7 @@ header {
 
 .timeline-item h3 {
     margin-bottom: 10px;
-    color: black; /* Pastikan putih karena background section alur itu gelap */
+    color: #333333; /* Pastikan putih karena background section alur itu gelap */
 }
 
 .timeline-item p {
