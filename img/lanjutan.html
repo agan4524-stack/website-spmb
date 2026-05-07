@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Jarak Jauh - SMK MIHADUNAL ULA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body style="background: #1a1a1a;">
+    <section class="container" style="padding-top: 50px;">
+        <div class="form-wrapper"
+            style="max-width: 600px; margin: auto; background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px);">
+            <h2 style="color: #fff; text-align: center;">Formulir Lanjutan (Jarak Jauh)</h2>
+            <p style="color: #ccc; text-align: center; font-size: 14px;">Gunakan form ini jika Anda berhalangan hadir ke
+                sekolah untuk verifikasi fisik.</p>
+            <br>
+
+            <form id="formLanjutan" class="main-form">
+                <div class="input-group">
+                    <label>Nama Lengkap (Sesuai Ijazah)</label>
+                    <input type="text" name="nama" id="nama" required>
+                </div>
+                <div class="input-group">
+                    <label>NIK (16 Digit)</label>
+                    <input type="number" name="nik" id="nik" required>
+                </div>
+                <div class="input-group">
+                    <label>NISN</label>
+                    <input type="number" name="nisn" id="nisn" required>
+                </div>
+                <div class="input-group">
+                    <label>Alasan Daftar Online</label>
+                    <textarea name="alasan" id="alasan" placeholder="Contoh: Domisili di luar kota / Sakit"
+                        style="width: 100%; background: #333; color: #fff; border-radius: 10px; padding: 10px;"></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Tempat, Tanggal Lahir</label>
+                    <input type="text" name="ttl" id="ttl" placeholder="Contoh: Sukabumi, 12 Mei 2010" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Nama Ayah/Ibu</label>
+                    <input type="text" name="ortu" id="ortu" placeholder="Nama Wali" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Pekerjaan Orang Tua</label>
+                    <input type="text" name="pekerjaan_ortu" id="pekerjaan_ortu" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Prestasi / Keahlian (Jika ada)</label>
+                    <textarea name="prestasi" id="prestasi" placeholder="Misal: Juara 1 Lomba MTQ / Bisa Desain Grafis"
+                        style="width: 100%; background: #333; color: #fff; border-radius: 10px; padding: 10px;"></textarea>
+                </div>
+                
+                <p style="color: #ccc; font-size: 13px; margin-top: 15px; font-style: italic; text-align: center;">
+        *Setelah mengisi formulir ini, harap siapkan dokumen fisik (Fotokopi KK & Ijazah) untuk dikirimkan via ekspedisi atau dibawa saat masuk asrama nanti.
+    </p>
+
+                <button type="button" onclick="kirimLanjutan()" class="btn-submit" id="btnSubmit">Kirim Data
+                    Lanjutan</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        function kirimLanjutan() {
+            // URL yang sama dengan yang kamu pakai di index.html
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbx1SpAoiW9eciAtx1-AB_wcErSz047Bd7Cycr_3zR9hHW1LMqBfGqmEXuRCjf40D0GS-Q/exec';
+            const form = document.getElementById('formLanjutan');
+            const btn = document.getElementById('btnSubmit');
+
+            // Cek manual agar tidak muncul alert "Mohon lengkapi" yang tadi
+            if (!document.getElementById('nama').value || !document.getElementById('nik').value) {
+                alert("Nama dan NIK wajib diisi ya!");
+                return;
+            }
+
+            btn.innerHTML = "⏳ Memproses...";
+            btn.disabled = true;
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    alert("Data berhasil dikirim ke sistem SMK Mihadunal Ula!");
+                    window.location.href = "https://wa.me/6285717334108?text=Halo%20Admin,%20saya%20sudah%20mengisi%20Formulir%20Lanjutan%20Online.";
+                })
+                .catch(error => {
+                    alert("Gagal terhubung. Cek koneksi internet.");
+                    btn.disabled = false;
+                    btn.innerHTML = "Kirim Data Lanjutan";
+                });
+        }
+    </script>
+</body>
+
+</html>
