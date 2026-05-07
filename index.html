@@ -145,7 +145,7 @@
         <input type="tel" id="wa_ortu" name="wa_ortu" placeholder="08..." required>
     </div>
     
-    <button type="button" onclick="prosesPendaftaran()" class="btn-submit" id="btnSubmit">Daftar Sekarang</button>
+   <button type="button" onclick="kirimKeWA()" class="btn-submit" id="btnSubmit">Daftar Sekarang</button>
 </form>
         </div>
     </section>
@@ -192,48 +192,49 @@
 </body>
 </html>
 <script>
+/** * Fungsi Utama Pendaftaran 
+ * Menghubungkan Form ke Google Sheets & WhatsApp Admin
+ */
 function kirimKeWA() {
-    // 1. URL Apps Script (Masukkan URL yang kamu dapet dari Deploy tadi di sini)
+    // 1. Konfigurasi (Pastikan URL ini sudah di-deploy sebagai 'Anyone')
     const scriptURL = 'https://script.google.com/macros/s/AKfycbx1SpAoiW9eciAtx1-AB_wcErSz047Bd7Cycr_3zR9hHW1LMqBfGqmEXuRCjf40D0GS-Q/exec';
-    const form = document.getElementById('spmbForm'); // Pastikan ID form kamu benar
+    const noAdmin = "6285717334108"; 
+    
+    const form = document.getElementById('spmbForm');
+    const btn = document.getElementById('btnSubmit');
 
-    // 2. Cek Anti-Jahil (LocalStorage)
-    const statusDaftar = localStorage.getItem('sudahDaftarSPMB');
-    if (statusDaftar === 'true') {
-        alert("Wah, kamu sudah mengirim data sebelumnya. Tunggu balasan Admin ya!");
+    // 2. Cek apakah user sudah pernah daftar (Anti-Spam)
+    if (localStorage.getItem('sudahDaftarSPMB') === 'true') {
+        alert("Wah, kamu sudah mengirim data sebelumnya. Mohon tunggu balasan Admin di WhatsApp ya!");
         return; 
     }
 
     // 3. Ambil data dari inputan
-    const nama = document.getElementById('nama').value;
-    const sekolah = document.getElementById('sekolah_asal').value;
+    const nama = document.getElementById('nama').value.trim();
+    const sekolah = document.getElementById('sekolah_asal').value.trim();
     const jurusan = document.getElementById('jurusan').value;
-    const waOrtu = document.getElementById('wa_ortu').value;
+    const alamat = document.getElementById('alamat').value.trim();
+    const statusSiswa = document.getElementById('status_siswa').value;
+    const waOrtu = document.getElementById('wa_ortu').value.trim();
 
-    // Tambahan konfirmasi yang kamu mau tadi (Alamat & Status)
-    const alamat = document.getElementById('alamat') ? document.getElementById('alamat').value : "-";
-    const statusSiswa = document.getElementById('status_siswa') ? document.getElementById('status_siswa').value : "-";
-
-    // 4. Validasi Dasar
-    if (nama === "" || sekolah === "" || jurusan === "" || waOrtu === "") {
-        alert("Mohon lengkapi semua data pendaftaran ya!");
+    // 4. Validasi Dasar (Cek kalau ada yang kosong)
+    if (!nama || !sekolah || !jurusan || !alamat || !waOrtu) {
+        alert("Mohon lengkapi semua kolom pendaftaran ya!");
         return;
     }
 
-    // Ubah teks tombol biar pendaftar tahu proses sedang jalan
-    const btn = document.querySelector('.btn-submit');
+    // 5. Animasi Tombol saat Loading
     const teksAsli = btn.innerHTML;
-    btn.innerHTML = "Sedang Mengirim...";
+    btn.innerHTML = "⏳ Sedang Mengirim...";
     btn.disabled = true;
 
-    // 5. PROSES KIRIM KE GOOGLE SHEETS
+    // 6. Eksekusi Kirim ke Google Sheets
     fetch(scriptURL, { 
         method: 'POST', 
         body: new FormData(form) 
     })
     .then(response => {
-        // 6. Kalau sukses masuk Sheets, baru buka WhatsApp
-        const noAdmin = "6285717334108"; 
+        // 7. Jika sukses masuk Sheets, susun pesan & buka WhatsApp
         const pesan = "Halo Admin SMK MIHADUNAL ULA,%0A" + 
                       "Saya ingin mendaftar SPMB.%0A%0A" +
                       "*Data Calon Siswa dan Santri*%0A" +
@@ -247,43 +248,45 @@ function kirimKeWA() {
                       "---------------------------%0A" +
                       "Mohon info langkah pendaftaran selanjutnya. Terima kasih!";
 
+        // Tandai sudah daftar agar tidak dobel
         localStorage.setItem('sudahDaftarSPMB', 'true');
-        const urlWA = "https://wa.me/" + noAdmin + "?text=" + pesan;
         
+        // Buka link WhatsApp
+        const urlWA = "https://wa.me/" + noAdmin + "?text=" + pesan;
         window.open(urlWA, '_blank').focus();
 
-        // Balikin tombol
+        // Kembalikan tombol
         btn.innerHTML = teksAsli;
         btn.disabled = false;
+        form.reset();
     })
     .catch(error => {
         console.error('Error!', error.message);
-        alert("Gagal terhubung ke sistem. Cek koneksi internet kamu.");
+        alert("Waduh, gagal terhubung ke sistem. Cek koneksi internet kamu atau coba lagi nanti.");
         btn.innerHTML = teksAsli;
         btn.disabled = false;
     });
 }
-</script>
 
-<script>
-    // SCRIPT MENU MOBILE (Tetap seperti aslinya, jangan diubah)
-    document.addEventListener('DOMContentLoaded', function() {
-        const menu = document.querySelector('#mobile-menu');
-        const menuLinks = document.querySelector('#nav-menu');
+/** * Script Menu Mobile (Responsive)
+ */
+document.addEventListener('DOMContentLoaded', function() {
+    const menu = document.querySelector('#mobile-menu');
+    const menuLinks = document.querySelector('#nav-menu');
 
-        if (menu) {
-            menu.addEventListener('click', function() {
-                menu.classList.toggle('is-active');
-                menuLinks.classList.toggle('active');
-            });
-        }
+    if (menu) {
+        menu.addEventListener('click', function() {
+            menu.classList.toggle('is-active');
+            menuLinks.classList.toggle('active');
+        });
+    }
 
-        const navItems = document.querySelectorAll('#nav-menu a');
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                menu.classList.remove('is-active');
-                menuLinks.classList.remove('active');
-            });
+    const navItems = document.querySelectorAll('#nav-menu a');
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            if (menu) menu.classList.remove('is-active');
+            if (menuLinks) menuLinks.classList.remove('active');
         });
     });
+});
 </script>
