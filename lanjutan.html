@@ -69,7 +69,7 @@
     <script>
         function kirimLanjutan() {
             // URL yang sama dengan yang kamu pakai di index.html
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbwh3Q-qxsuqhMbKz7Id0t33ChAilKduyaymoC31lZvA3Zw3NF9QZhyLQidlkfw7Vv_0tw/exec';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzjLiyyBp0n65D_PBg7U46MhSbnydKI8nVXAXg9urjupOrlz69cWtQ8rQ57C9fJnIsNSA/exec';
             const form = document.getElementById('formLanjutan');
             const btn = document.getElementById('btnSubmit');
 
@@ -82,15 +82,11 @@
             btn.innerHTML = "⏳ Memproses...";
             btn.disabled = true;
 
-            fetch(scriptURL, { 
-    method: 'POST', 
-    mode: 'no-cors', // Tambahkan baris ini Ra!
-    body: new FormData(form) 
-})
-.then(() => {
-    alert("Data berhasil dikirim ke sistem SMK Mihadunal Ula!");
-    window.location.href = "https://wa.me/6285717334108";
-})
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    alert("Data berhasil dikirim ke sistem SMK Mihadunal Ula!");
+                    window.location.href = "https://wa.me/6285717334108?text=Halo%20Admin,%20saya%20sudah%20mengisi%20Formulir%20Lanjutan%20Online.";
+                })
                 .catch(error => {
                     alert("Gagal terhubung. Cek koneksi internet.");
                     btn.disabled = false;
