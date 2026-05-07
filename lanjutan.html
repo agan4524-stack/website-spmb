@@ -82,11 +82,15 @@
             btn.innerHTML = "⏳ Memproses...";
             btn.disabled = true;
 
-            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-                .then(response => {
-                    alert("Data berhasil dikirim ke sistem SMK Mihadunal Ula!");
-                    window.location.href = "https://wa.me/6285717334108?text=Halo%20Admin,%20saya%20sudah%20mengisi%20Formulir%20Lanjutan%20Online.";
-                })
+            fetch(scriptURL, { 
+    method: 'POST', 
+    mode: 'no-cors', // Tambahkan baris ini Ra!
+    body: new FormData(form) 
+})
+.then(() => {
+    alert("Data berhasil dikirim ke sistem SMK Mihadunal Ula!");
+    window.location.href = "https://wa.me/6285717334108";
+})
                 .catch(error => {
                     alert("Gagal terhubung. Cek koneksi internet.");
                     btn.disabled = false;
