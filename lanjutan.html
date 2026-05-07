@@ -67,32 +67,39 @@
     </section>
 
     <script>
-        function kirimLanjutan() {
-            // URL yang sama dengan yang kamu pakai di index.html
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbzjLiyyBp0n65D_PBg7U46MhSbnydKI8nVXAXg9urjupOrlz69cWtQ8rQ57C9fJnIsNSA/exec';
-            const form = document.getElementById('formLanjutan');
-            const btn = document.getElementById('btnSubmit');
+     function kirimLanjutan() {
+    // 1. Pastikan URL ini hasil "Copy" dari link ATAS (Aplikasi Web) tadi
+    const scriptURL = 'MASUKKAN_URL_YANG_ATAS_DI_SINI'; 
+    const form = document.getElementById('formLanjutan');
+    const btn = document.getElementById('btnSubmit');
 
-            // Cek manual agar tidak muncul alert "Mohon lengkapi" yang tadi
-            if (!document.getElementById('nama').value || !document.getElementById('nik').value) {
-                alert("Nama dan NIK wajib diisi ya!");
-                return;
-            }
+    // 2. Cek apakah Nama sudah diisi (Simple check)
+    const namaInput = document.getElementById('nama').value;
+    if (!namaInput) {
+        alert("Nama wajib diisi ya!");
+        return;
+    }
 
-            btn.innerHTML = "⏳ Memproses...";
-            btn.disabled = true;
+    // 3. Langsung kirim tanpa banyak tanya
+    btn.innerHTML = "⏳ Sedang Mengirim...";
+    btn.disabled = true;
 
-            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-                .then(response => {
-                    alert("Data berhasil dikirim ke sistem SMK Mihadunal Ula!");
-                    window.location.href = "https://wa.me/6285717334108?text=Halo%20Admin,%20saya%20sudah%20mengisi%20Formulir%20Lanjutan%20Online.";
-                })
-                .catch(error => {
-                    alert("Gagal terhubung. Cek koneksi internet.");
-                    btn.disabled = false;
-                    btn.innerHTML = "Kirim Data Lanjutan";
-                });
-        }
+    fetch(scriptURL, { 
+        method: 'POST', 
+        mode: 'no-cors', // Biar aman dari blokir browser
+        body: new FormData(form) 
+    })
+    .then(() => {
+        alert("Alhamdulillah! Data pendaftaran lanjutan berhasil terkirim.");
+        // Redirect ke WA Admin
+        window.location.href = "https://wa.me/6285717334108?text=Halo%20Admin,%20saya%20sudah%20mengisi%20Formulir%20Lanjutan%20Online.";
+    })
+    .catch(error => {
+        alert("Terjadi kesalahan teknis. Pastikan sudah klik 'Deploy' versi baru di Apps Script.");
+        btn.disabled = false;
+        btn.innerHTML = "Kirim Data Lanjutan";
+    });
+}
     </script>
 </body>
 
