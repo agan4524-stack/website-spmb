@@ -112,29 +112,40 @@
                     <p>📍 Alamat: Jl. Bojongsawah Kp. Tanjungsari Des. Bojongsawah Kec. Kebonpedes kab. Sukabumi Jawa Barat</p>
                 </div>
             </div>
-
-           <form id="spmbForm" class="main-form">
+<form id="spmbForm" class="main-form">
     <div class="input-group">
         <label>Nama Lengkap</label>
-        <input type="text" id="nama" placeholder="Contoh: Imam Koswara" required>
+        <input type="text" id="nama" name="nama" placeholder="Contoh: Ovie Ayu Rosadi" required>
     </div>
     <div class="input-group">
         <label>Asal Sekolah</label>
-        <input type="text" id="sekolah_asal" placeholder="Nama Sekolah Asal" required>
+        <input type="text" id="sekolah_asal" name="sekolah_asal" placeholder="Nama Sekolah Asal" required>
     </div>
     <div class="input-group">
         <label>Pilih Jurusan</label>
-        <select id="jurusan" required>
+        <select id="jurusan" name="jurusan" required>
             <option value="">-- Pilih Jurusan --</option>
             <option value="PPLG (RPL)">PPLG (RPL)</option>
             <option value="TJKT (TKJ)">TJKT (TKJ)</option>
         </select>
     </div>
     <div class="input-group">
-        <label>Nomor WhatsApp Ortu/Wali</label>
-        <input type="tel" id="wa_ortu" placeholder="08..." required>
+        <label>Alamat Lengkap</label>
+        <input type="text" id="alamat" name="alamat" placeholder="Kecamatan/Desa" required>
     </div>
-    <button type="button" onclick="kirimKeWA()" class="btn-submit">Kirim via WhatsApp</button>
+    <div class="input-group">
+        <label>Status Siswa</label>
+        <select id="status_siswa" name="status_siswa" required>
+            <option value="Siswa Reguler">Siswa Reguler (Pulang Pergi)</option>
+            <option value="Santri">Santri (Asrama/Mukin)</option>
+        </select>
+    </div>
+    <div class="input-group">
+        <label>Nomor WhatsApp Ortu/Wali</label>
+        <input type="tel" id="wa_ortu" name="wa_ortu" placeholder="08..." required>
+    </div>
+    
+    <button type="button" onclick="prosesPendaftaran()" class="btn-submit" id="btnSubmit">Daftar Sekarang</button>
 </form>
         </div>
     </section>
@@ -182,64 +193,91 @@
 </html>
 <script>
 function kirimKeWA() {
-    // 1. Cek apakah user sudah pernah daftar di browser ini (Anti-Jahil)
+    // 1. URL Apps Script (Masukkan URL yang kamu dapet dari Deploy tadi di sini)
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbx1SpAoiW9eciAtx1-AB_wcErSz047Bd7Cycr_3zR9hHW1LMqBfGqmEXuRCjf40D0GS-Q/exec';
+    const form = document.getElementById('spmbForm'); // Pastikan ID form kamu benar
+
+    // 2. Cek Anti-Jahil (LocalStorage)
     const statusDaftar = localStorage.getItem('sudahDaftarSPMB');
     if (statusDaftar === 'true') {
-        alert("Wah, kamu sudah mengirim data pendaftaran sebelumnya. Mohon tunggu balasan dari Admin di WhatsApp ya!");
+        alert("Wah, kamu sudah mengirim data sebelumnya. Tunggu balasan Admin ya!");
         return; 
     }
 
-    // 2. Ambil data dari inputan
+    // 3. Ambil data dari inputan
     const nama = document.getElementById('nama').value;
     const sekolah = document.getElementById('sekolah_asal').value;
     const jurusan = document.getElementById('jurusan').value;
     const waOrtu = document.getElementById('wa_ortu').value;
 
-    // 3. Validasi sederhana (Pastikan tidak kosong)
+    // Tambahan konfirmasi yang kamu mau tadi (Alamat & Status)
+    const alamat = document.getElementById('alamat') ? document.getElementById('alamat').value : "-";
+    const statusSiswa = document.getElementById('status_siswa') ? document.getElementById('status_siswa').value : "-";
+
+    // 4. Validasi Dasar
     if (nama === "" || sekolah === "" || jurusan === "" || waOrtu === "") {
         alert("Mohon lengkapi semua data pendaftaran ya!");
         return;
     }
 
-    // 4. Konfigurasi Nomor Admin & Pesan
-    const noAdmin = "6285717334108"; 
-    const pesan = "Halo Admin SMK MIHADUNAL ULA,%0A" + 
-                  "Saya ingin mendaftar SPMB.%0A%0A" +
-                  "*Data Calon Siswa dan Santri*%0A" +
-                  "---------------------------%0A" +
-                  "Nama: " + nama + "%0A" +
-                  "Asal Sekolah: " + sekolah + "%0A" +
-                  "Jurusan: " + jurusan + "%0A" +
-                  "WA Ortu: " + waOrtu + "%0A" +
-                  "---------------------------%0A" +
-                  "Mohon info langkah pendaftaran selanjutnya. Terima kasih!";
+    // Ubah teks tombol biar pendaftar tahu proses sedang jalan
+    const btn = document.querySelector('.btn-submit');
+    const teksAsli = btn.innerHTML;
+    btn.innerHTML = "Sedang Mengirim...";
+    btn.disabled = true;
 
-    // 5. Tandai bahwa user ini sudah berhasil mendaftar (Simpan di memori browser)
-    localStorage.setItem('sudahDaftarSPMB', 'true');
+    // 5. PROSES KIRIM KE GOOGLE SHEETS
+    fetch(scriptURL, { 
+        method: 'POST', 
+        body: new FormData(form) 
+    })
+    .then(response => {
+        // 6. Kalau sukses masuk Sheets, baru buka WhatsApp
+        const noAdmin = "6285717334108"; 
+        const pesan = "Halo Admin SMK MIHADUNAL ULA,%0A" + 
+                      "Saya ingin mendaftar SPMB.%0A%0A" +
+                      "*Data Calon Siswa dan Santri*%0A" +
+                      "---------------------------%0A" +
+                      "*Nama:* " + nama + "%0A" +
+                      "*Asal Sekolah:* " + sekolah + "%0A" +
+                      "*Jurusan:* " + jurusan + "%0A" +
+                      "*Alamat:* " + alamat + "%0A" +
+                      "*Status:* " + statusSiswa + "%0A" +
+                      "*WA Ortu:* " + waOrtu + "%0A" +
+                      "---------------------------%0A" +
+                      "Mohon info langkah pendaftaran selanjutnya. Terima kasih!";
 
-    // 6. Eksekusi buka WhatsApp
-    const url = "https://wa.me/" + noAdmin + "?text=" + pesan;
-    window.open(url, '_blank').focus();
+        localStorage.setItem('sudahDaftarSPMB', 'true');
+        const urlWA = "https://wa.me/" + noAdmin + "?text=" + pesan;
+        
+        window.open(urlWA, '_blank').focus();
+
+        // Balikin tombol
+        btn.innerHTML = teksAsli;
+        btn.disabled = false;
+    })
+    .catch(error => {
+        console.error('Error!', error.message);
+        alert("Gagal terhubung ke sistem. Cek koneksi internet kamu.");
+        btn.innerHTML = teksAsli;
+        btn.disabled = false;
+    });
 }
 </script>
+
 <script>
+    // SCRIPT MENU MOBILE (Tetap seperti aslinya, jangan diubah)
     document.addEventListener('DOMContentLoaded', function() {
         const menu = document.querySelector('#mobile-menu');
         const menuLinks = document.querySelector('#nav-menu');
 
-        // Cek di console log buat mastiin tombolnya ketemu
-        console.log("Menu Toggle:", menu); 
-        console.log("Nav Menu:", menuLinks);
-
         if (menu) {
             menu.addEventListener('click', function() {
-                // Toggle class aktif
                 menu.classList.toggle('is-active');
                 menuLinks.classList.toggle('active');
             });
         }
 
-        // Tutup menu otomatis kalau salah satu link diklik
         const navItems = document.querySelectorAll('#nav-menu a');
         navItems.forEach(item => {
             item.addEventListener('click', () => {
