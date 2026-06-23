@@ -1088,6 +1088,31 @@ header#beranda::after {
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
     font-weight: 500;
 }
+/* Override <p> di dalam info-pesantren agar tidak tertimpa style global */
+.info-pesantren p {
+    color: #FFFFFF !important;
+    opacity: 1 !important;
+    margin-bottom: 0 !important;
+    font-size: 1rem;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+    font-weight: 500;
+}
+
+/* Override <small> tag kuota agar putih dan jelas */
+.kuota-container small {
+    display: block;
+    color: #E0EAFF;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+    margin-top: 6px;
+    text-align: center;
+}
+
+.kuota-container small strong {
+    color: #FFFFFF;
+}
+
 
 .kuota-container {
     margin-bottom: 35px;
