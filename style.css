@@ -980,7 +980,7 @@ header#beranda::after {
 }
 
 /* ==========================================================================
-   5. SECTION BEASISWA (Automatic Image Slider Illusion + Glass Panel)
+   5. SECTION BEASISWA (Automatic Image Slider Illusion + Glass Panel) - OPTIMIZED
    ========================================================================== */
 .beasiswa-box {
     margin: 80px auto;
@@ -1011,7 +1011,7 @@ header#beranda::after {
     height: 100%;
     background-size: cover;
     background-position: center;
-    filter: brightness(0.35) blur(2px);
+    filter: brightness(0.5) blur(1px); /* DIOPTIMALKAN: Kecerahan dinaikkan sedikit dari 0.35 ke 0.5 */
 }
 
 @keyframes sideSlider {
@@ -1021,9 +1021,22 @@ header#beranda::after {
     100% { transform: translateX(0%); }
 }
 
+/* DIOPTIMALKAN: Menggunakan pseudo-element asli untuk overlay agar menyatu sempurna dengan slider */
+.beasiswa-box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* DIOPTIMALKAN: Mengurangi opacity gradien biru (dari 0.9/0.8 menjadi 0.65/0.55) agar kontras teks tajam */
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.65) 0%, rgba(37, 99, 235, 0.55) 100%);
+    z-index: 2;
+}
+
 .beasiswa-content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     padding: 60px;
     color: var(--white);
     max-width: 650px;
@@ -1032,6 +1045,7 @@ header#beranda::after {
 .beasiswa-content .badge {
     display: inline-block;
     background: #EF4444;
+    color: var(--white); /* DIOPTIMALKAN: Memastikan teks badge putih bersih */
     padding: 6px 16px;
     border-radius: 100px;
     font-size: 0.8rem;
@@ -1052,22 +1066,27 @@ header#beranda::after {
     font-weight: 800;
     margin-bottom: 16px;
     letter-spacing: -1px;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* DIOPTIMALKAN: Ditambahkan shadow lembut agar judul pop-out */
 }
 
 .beasiswa-content p {
     font-size: 1.1rem;
-    opacity: 0.9;
+    color: var(--white); /* DIOPTIMALKAN: Dipaksa menggunakan warna putih penuh agar tidak pudar/samar */
+    opacity: 1; /* DIOPTIMALKAN: Dari 0.9 dinaikkan ke 1 agar teks deskripsi sangat jelas dibaca */
     line-height: 1.6;
     margin-bottom: 24px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .info-pesantren {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 14px 20px;
     border-radius: 12px;
     margin-bottom: 30px;
     border-left: 4px solid #3B82F6;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .kuota-container {
@@ -1077,7 +1096,7 @@ header#beranda::after {
 .kuota-bar {
     width: 100%;
     height: 10px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.25); /* DIOPTIMALKAN: Menaikkan sedikit background bar agar terlihat batasnya */
     border-radius: 100px;
     overflow: hidden;
     margin-bottom: 10px;
