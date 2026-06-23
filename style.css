@@ -592,3 +592,812 @@ footer {
     padding-top: 20px;
     color: #666;
 }
+/* ==========================================================================
+   SPMB SMK MIHADUNAL ULA - PREMIUM MODERN REDESIGN (2026)
+   Theme: Modern Islamic Boarding School + High-Tech Startup
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    /* Color Palette */
+    --primary-gradient: linear-gradient(135deg, #0F4CFF 0%, #2563EB 50%, #3B82F6 100%);
+    --dark-gradient: linear-gradient(135deg, #070B19 0%, #0F172A 100%);
+    --glass-bg: rgba(255, 255, 255, 0.45);
+    --glass-border: rgba(255, 255, 255, 0.25);
+    --text-main: #0F172A;
+    --text-muted: #475569;
+    --white: #FFFFFF;
+    --accent-glow: rgba(37, 99, 235, 0.4);
+    
+    /* System Properties */
+    --radius-premium: 20px;
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base & Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: #F8FAFC;
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Background Blobs Layer Effect */
+body::before, body::after {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(15,76,255,0.15) 0%, rgba(59,130,246,0) 70%);
+    z-index: -1;
+    filter: blur(40px);
+    animation: pulseBlob 8s infinite alternate;
+}
+body::before { top: 15%; left: -100px; }
+body::after { top: 60%; right: -100px; animation-delay: 4s; }
+
+@keyframes pulseBlob {
+    0% { transform: scale(1) translate(0, 0); }
+    100% { transform: scale(1.2) translate(30px, 50px); }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 24px;
+}
+
+/* ==========================================================================
+   1. NAVBAR (Premium Glassmorphism + Sticky)
+   ========================================================================== */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid var(--glass-border);
+    z-index: 1000;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+    transition: var(--transition-smooth);
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+    position: relative;
+}
+
+#nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 40px;
+}
+
+#nav-menu li a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 8px 0;
+    transition: var(--transition-smooth);
+}
+
+#nav-menu li a:not(.btn-daftar)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-gradient);
+    transition: var(--transition-smooth);
+}
+
+#nav-menu li a:not(.btn-daftar):hover {
+    color: #0F4CFF;
+}
+
+#nav-menu li a:not(.btn-daftar):hover::after {
+    width: 100%;
+}
+
+/* Button Daftar Premium di Nav */
+.btn-daftar {
+    background: var(--primary-gradient);
+    color: var(--white) !important;
+    padding: 12px 28px !important;
+    border-radius: 100px;
+    font-weight: 600 !important;
+    box-shadow: 0 10px 25px rgba(15, 76, 255, 0.3);
+    display: inline-block;
+}
+
+.btn-daftar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(15, 76, 255, 0.45);
+}
+
+/* Mobile Menu Toggle Styling */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.menu-toggle .bar {
+    width: 28px;
+    height: 3px;
+    background-color: #0F4CFF;
+    border-radius: 10px;
+    transition: var(--transition-smooth);
+}
+
+/* ==========================================================================
+   2. HERO SECTION (Dynamic & Ultra Modern Canvas)
+   ========================================================================== */
+header#beranda {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 140px 24px 80px 24px;
+    background: radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 10% 80%, rgba(15, 76, 255, 0.08) 0%, transparent 40%);
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 900px;
+    animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+header#beranda h1 {
+    font-size: 3.8rem;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    color: #0F172A;
+    margin-bottom: 24px;
+}
+
+header#beranda .jargon {
+    display: inline-block;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2563EB;
+    background: rgba(37, 99, 235, 0.08);
+    padding: 8px 24px;
+    border-radius: 100px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(37, 99, 235, 0.15);
+    letter-spacing: 1px;
+}
+
+/* Injecting Virtual Statistics Layer via CSS Grid */
+header#beranda::after {
+    content: "500+ Alumni  •  20 Beasiswa Penuh  •  2 Jurusan Unggulan";
+    position: absolute;
+    bottom: 5%;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.cta-button {
+    display: inline-block;
+    text-decoration: none;
+    background: linear-gradient(135deg, #0F4CFF 0%, #2563EB 100%);
+    color: var(--white);
+    padding: 18px 44px;
+    border-radius: var(--radius-premium);
+    font-weight: 600;
+    font-size: 1.05rem;
+    box-shadow: 0 0 30px var(--accent-glow);
+    transition: var(--transition-smooth);
+}
+
+.cta-button:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(15, 76, 255, 0.5);
+}
+
+/* ==========================================================================
+   3. CARD JURUSAN (Glassmorphism + Translate Effects)
+   ========================================================================== */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.grid-jurusan {
+    display: grid;
+    grid-template-columns: repeat(2, 12fr);
+    gap: 30px;
+}
+
+.grid-jurusan .card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-premium);
+    padding: 45px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.02);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.grid-jurusan .card::before {
+    content: "FAVORIT";
+    position: absolute;
+    top: 25px;
+    right: -35px;
+    background: #EF4444;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 6px 40px;
+    transform: rotate(45deg);
+    box-shadow: 0 2px 10px rgba(239, 68, 68, 0.3);
+    letter-spacing: 1px;
+}
+
+.grid-jurusan .card:hover {
+    transform: translateY(-12px);
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(15, 76, 255, 0.3);
+    box-shadow: 0 30px 60px rgba(15, 76, 255, 0.12);
+}
+
+.card-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--primary-gradient);
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 20px rgba(15, 76, 255, 0.2);
+}
+
+.grid-jurusan .card h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #0F172A;
+    margin-bottom: 8px;
+}
+
+.grid-jurusan .card p {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #2563EB;
+    margin-bottom: 16px;
+}
+
+.grid-jurusan .card small {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   4. TIMELINE ALUR PENDAFTARAN (Horizontal Line Architecture)
+   ========================================================================== */
+.timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    position: relative;
+    margin-top: 40px;
+}
+
+.timeline-item {
+    background: var(--white);
+    padding: 30px;
+    border-radius: var(--radius-premium);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    border: 1px solid #E2E8F0;
+    position: relative;
+    transition: var(--transition-smooth);
+}
+
+.timeline-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+    border-color: #3B82F6;
+}
+
+.timeline-item .number {
+    width: 46px;
+    height: 46px;
+    background: var(--primary-gradient);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 16px rgba(15, 76, 255, 0.25);
+}
+
+.timeline-item h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.timeline-item p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   5. SECTION BEASISWA (Automatic Image Slider Illusion + Glass Panel)
+   ========================================================================== */
+.beasiswa-box {
+    margin: 80px auto;
+    max-width: 1150px;
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 30px 60px rgba(15, 76, 255, 0.15);
+}
+
+/* Pseudo Slider CSS Animation */
+.beasiswa-bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300%;
+    height: 100%;
+    display: flex;
+    z-index: 1;
+    animation: sideSlider 15s infinite ease-in-out;
+}
+
+.bg-panel {
+    width: 33.333%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.35) blur(2px);
+}
+
+@keyframes sideSlider {
+    0%, 25% { transform: translateX(0%); }
+    33%, 58% { transform: translateX(-33.333%); }
+    66%, 91% { transform: translateX(-66.666%); }
+    100% { transform: translateX(0%); }
+}
+
+.beasiswa-content {
+    position: relative;
+    z-index: 2;
+    padding: 60px;
+    color: var(--white);
+    max-width: 650px;
+}
+
+.beasiswa-content .badge {
+    display: inline-block;
+    background: #EF4444;
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    animation: blinkEffect 1.5s infinite alternate;
+}
+
+@keyframes blinkEffect {
+    0% { opacity: 0.6; box-shadow: 0 0 0px rgba(239, 68, 68, 0); }
+    100% { opacity: 1; box-shadow: 0 0 15px rgba(239, 68, 68, 0.6); }
+}
+
+.beasiswa-content h2 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+}
+
+.beasiswa-content p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.info-pesantren {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 14px 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    border-left: 4px solid #3B82F6;
+}
+
+.kuota-container {
+    margin-bottom: 35px;
+}
+
+.kuota-bar {
+    width: 100%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 100px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.kuota-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3B82F6, #60A5FA);
+    border-radius: 100px;
+    position: relative;
+    animation: progressLoad 2.5s ease-out forwards;
+}
+
+@keyframes progressLoad {
+    from { width: 0%; }
+}
+
+.btn-beasiswa {
+    display: inline-block;
+    text-decoration: none;
+    background: var(--white);
+    color: #0F4CFF;
+    font-weight: 700;
+    padding: 14px 32px;
+    border-radius: var(--radius-premium);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: var(--transition-smooth);
+}
+
+.btn-beasiswa:hover {
+    transform: scale(1.03);
+    box-shadow: 0 15px 30px rgba(255,255,255,0.2);
+}
+
+/* ==========================================================================
+   6. FORM PENDAFTARAN (Modern Premium Forms & Details)
+   ========================================================================== */
+.form-wrapper {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    background: var(--white);
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 40px 80px rgba(15, 76, 255, 0.06);
+    border: 1px solid #E2E8F0;
+}
+
+.form-info {
+    background: var(--dark-gradient);
+    color: var(--white);
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-info h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+}
+
+.form-info p {
+    color: #94A3B8;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.kontak-person {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 0.95rem;
+    color: #E2E8F0;
+}
+
+.kontak-person p strong {
+    color: #60A5FA;
+}
+
+.main-form {
+    padding: 60px;
+    background: #FAFAFA;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #334155;
+}
+
+.input-group input, .input-group select {
+    width: 100%;
+    padding: 16px 20px;
+    border: 1px solid #CBD5E1;
+    border-radius: 14px;
+    font-size: 1rem;
+    background-color: var(--white);
+    color: var(--text-main);
+    transition: var(--transition-smooth);
+}
+
+.input-group input:focus, .input-group select:focus {
+    outline: none;
+    border-color: #0F4CFF;
+    box-shadow: 0 0 0 4px rgba(15, 76, 255, 0.12);
+    background-color: var(--white);
+}
+
+.btn-submit {
+    background: var(--primary-gradient);
+    color: var(--white);
+    border: none;
+    padding: 18px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    border-radius: 14px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(15, 76, 255, 0.25);
+    transition: var(--transition-smooth);
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(15, 76, 255, 0.4);
+}
+
+/* ==========================================================================
+   7. LOKASI (Premium Map Frame Architecture)
+   ========================================================================== */
+.map-wrapper {
+    background: var(--white);
+    padding: 24px;
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.04);
+    border: 1px solid #E2E8F0;
+}
+
+.map-container iframe {
+    border-radius: var(--radius-premium) !important;
+    filter: grayscale(10%) contrast(105%);
+}
+
+.btn-map {
+    display: inline-block;
+    text-decoration: none;
+    background: rgba(37, 99, 235, 0.08);
+    color: #0F4CFF;
+    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 100px;
+    border: 1px solid rgba(15, 76, 255, 0.15);
+    transition: var(--transition-smooth);
+}
+
+.btn-map:hover {
+    background: var(--primary-gradient);
+    color: var(--white);
+    box-shadow: 0 10px 20px rgba(15, 76, 255, 0.2);
+}
+
+/* ==========================================================================
+   8. FLOATING WHATSAPP (Advanced Pulsing Core)
+   ========================================================================== */
+.float-wa {
+    position: fixed;
+    bottom: 35px;
+    right: 35px;
+    background: #25D366;
+    padding: 14px 24px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+    z-index: 999;
+    transition: var(--transition-smooth);
+    animation: pulseWa 2s infinite;
+}
+
+.float-wa:hover {
+    transform: scale(1.08) translateY(-5px);
+}
+
+.wa-text {
+    color: var(--white);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.float-wa img {
+    width: 24px;
+    height: 24px;
+}
+
+@keyframes pulseWa {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* ==========================================================================
+   9. FOOTER (Dark-Mode Ecosystem Layout)
+   ========================================================================== */
+footer {
+    background: var(--dark-gradient);
+    color: var(--white);
+    padding: 80px 24px 40px 24px;
+    position: relative;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+footer h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+    background: linear-gradient(90deg, #FFFFFF, #94A3B8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+footer p {
+    color: #94A3B8;
+    font-size: 1rem;
+    margin-bottom: 40px;
+}
+
+.social-media a {
+    display: inline-block;
+    text-decoration: none;
+    color: #60A5FA;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px 28px;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition-smooth);
+}
+
+.social-media a:hover {
+    background: var(--white);
+    color: #070B19;
+    transform: translateY(-2px);
+}
+
+.copyright {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.85rem !important;
+    color: #64748B !important;
+}
+
+/* ==========================================================================
+   10. MOBILE & TABLET RESPONSIVE SYSTEM
+   ========================================================================== */
+@media (max-width: 1024px) {
+    header#beranda h1 { font-size: 3rem; }
+    .timeline { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .form-wrapper { grid-template-columns: 1fr; }
+    .form-info { padding: 40px; }
+}
+
+@media (max-width: 768px) {
+    nav { padding: 18px 24px; }
+    .menu-toggle { display: flex; }
+    
+    /* Responsive Premium Hamburger Drawer */
+    #nav-menu {
+        position: fixed;
+        top: -100vh;
+        left: 0;
+        width: 100%;
+        height: 75vh;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        border-bottom: 1px solid var(--glass-border);
+    }
+    
+    #nav-menu.active { top: 0; }
+    
+    /* Hamburger Menu Trigger Animations */
+    .menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
+    .menu-toggle.is-active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+    header#beranda h1 { font-size: 2.3rem; }
+    .grid-jurusan { grid-template-columns: 1fr; }
+    .timeline { grid-template-columns: 1fr; }
+    
+    .beasiswa-box { min-height: auto; margin: 40px 0; }
+    .beasiswa-content { padding: 40px 24px; }
+    .beasiswa-content h2 { font-size: 2rem; }
+    
+    .main-form { padding: 40px 24px; }
+    .btn-submit { width: 100%; }
+    
+    header#beranda::after { font-size: 0.75rem; width: 90%; text-align: center; }
+}
