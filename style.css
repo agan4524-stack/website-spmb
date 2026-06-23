@@ -980,7 +980,7 @@ header#beranda::after {
 }
 
 /* ==========================================================================
-   5. SECTION BEASISWA (Automatic Image Slider Illusion + Glass Panel) - OPTIMIZED
+   5. SECTION BEASISWA (Centered Symmetrical Layout)
    ========================================================================== */
 .beasiswa-box {
     margin: 80px auto;
@@ -991,6 +991,7 @@ header#beranda::after {
     min-height: 520px;
     display: flex;
     align-items: center;
+    justify-content: center;
     box-shadow: 0 30px 60px rgba(15, 76, 255, 0.15);
 }
 
@@ -1011,7 +1012,7 @@ header#beranda::after {
     height: 100%;
     background-size: cover;
     background-position: center;
-    filter: brightness(0.5) blur(1px); /* DIOPTIMALKAN: Kecerahan dinaikkan sedikit dari 0.35 ke 0.5 */
+    filter: brightness(0.35) blur(2px);
 }
 
 @keyframes sideSlider {
@@ -1021,38 +1022,29 @@ header#beranda::after {
     100% { transform: translateX(0%); }
 }
 
-/* DIOPTIMALKAN: Menggunakan pseudo-element asli untuk overlay agar menyatu sempurna dengan slider */
-.beasiswa-box::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* DIOPTIMALKAN: Mengurangi opacity gradien biru (dari 0.9/0.8 menjadi 0.65/0.55) agar kontras teks tajam */
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.65) 0%, rgba(37, 99, 235, 0.55) 100%);
-    z-index: 2;
-}
-
 .beasiswa-content {
     position: relative;
-    z-index: 3;
-    padding: 60px;
+    z-index: 2;
+    padding: 70px 60px;
     color: var(--white);
-    max-width: 650px;
+    max-width: 720px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .beasiswa-content .badge {
     display: inline-block;
     background: #EF4444;
-    color: var(--white); /* DIOPTIMALKAN: Memastikan teks badge putih bersih */
-    padding: 6px 16px;
+    padding: 6px 20px;
     border-radius: 100px;
     font-size: 0.8rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
+    letter-spacing: 1.5px;
+    margin-bottom: 22px;
     animation: blinkEffect 1.5s infinite alternate;
 }
 
@@ -1066,40 +1058,50 @@ header#beranda::after {
     font-weight: 800;
     margin-bottom: 16px;
     letter-spacing: -1px;
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* DIOPTIMALKAN: Ditambahkan shadow lembut agar judul pop-out */
+    line-height: 1.2;
 }
 
 .beasiswa-content p {
     font-size: 1.1rem;
-    color: var(--white); /* DIOPTIMALKAN: Dipaksa menggunakan warna putih penuh agar tidak pudar/samar */
-    opacity: 1; /* DIOPTIMALKAN: Dari 0.9 dinaikkan ke 1 agar teks deskripsi sangat jelas dibaca */
+    opacity: 0.9;
     line-height: 1.6;
-    margin-bottom: 24px;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    margin-bottom: 28px;
+    max-width: 500px;
 }
 
 .info-pesantren {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 14px 20px;
-    border-radius: 12px;
-    margin-bottom: 30px;
-    border-left: 4px solid #3B82F6;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 16px 28px;
+    border-radius: 14px;
+    margin-bottom: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
 }
 
 .kuota-container {
     margin-bottom: 35px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.kuota-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    opacity: 0.8;
+    margin-bottom: 8px;
 }
 
 .kuota-bar {
     width: 100%;
     height: 10px;
-    background: rgba(255, 255, 255, 0.25); /* DIOPTIMALKAN: Menaikkan sedikit background bar agar terlihat batasnya */
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 100px;
     overflow: hidden;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .kuota-fill {
@@ -1114,21 +1116,28 @@ header#beranda::after {
     from { width: 0%; }
 }
 
+.kuota-text {
+    font-size: 0.85rem;
+    opacity: 0.75;
+    text-align: center;
+}
+
 .btn-beasiswa {
     display: inline-block;
     text-decoration: none;
     background: var(--white);
     color: #0F4CFF;
     font-weight: 700;
-    padding: 14px 32px;
+    padding: 15px 40px;
     border-radius: var(--radius-premium);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     transition: var(--transition-smooth);
+    font-size: 1rem;
 }
 
 .btn-beasiswa:hover {
-    transform: scale(1.03);
-    box-shadow: 0 15px 30px rgba(255,255,255,0.2);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 18px 35px rgba(255,255,255,0.25);
 }
 
 /* ==========================================================================
@@ -1411,9 +1420,12 @@ footer p {
     .grid-jurusan { grid-template-columns: 1fr; }
     .timeline { grid-template-columns: 1fr; }
     
-    .beasiswa-box { min-height: auto; margin: 40px 0; }
-    .beasiswa-content { padding: 40px 24px; }
+    .beasiswa-box { min-height: auto; margin: 40px 16px; border-radius: 20px; }
+    .beasiswa-content { padding: 50px 24px; }
     .beasiswa-content h2 { font-size: 2rem; }
+    .beasiswa-content p { font-size: 1rem; }
+    .info-pesantren { padding: 14px 18px; }
+    .btn-beasiswa { padding: 13px 32px; }
     
     .main-form { padding: 40px 24px; }
     .btn-submit { width: 100%; }
