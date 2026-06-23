@@ -1012,7 +1012,7 @@ header#beranda::after {
     height: 100%;
     background-size: cover;
     background-position: center;
-    filter: brightness(0.35) blur(2px);
+    filter: brightness(0.5) blur(1px);
 }
 
 @keyframes sideSlider {
@@ -1059,26 +1059,34 @@ header#beranda::after {
     margin-bottom: 16px;
     letter-spacing: -1px;
     line-height: 1.2;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(0, 0, 0, 0.9);
+    color: #FFFFFF;
 }
 
 .beasiswa-content p {
     font-size: 1.1rem;
-    opacity: 0.9;
+    opacity: 1;
     line-height: 1.6;
     margin-bottom: 28px;
     max-width: 500px;
+    color: #F0F4FF;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
 }
 
 .info-pesantren {
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(10px);
+    background: rgba(15, 30, 80, 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     padding: 16px 28px;
     border-radius: 14px;
     margin-bottom: 32px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     width: 100%;
     max-width: 480px;
     text-align: center;
+    color: #FFFFFF;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+    font-weight: 500;
 }
 
 .kuota-container {
@@ -1118,8 +1126,11 @@ header#beranda::after {
 
 .kuota-text {
     font-size: 0.85rem;
-    opacity: 0.75;
+    opacity: 1;
     text-align: center;
+    color: #E0EAFF;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    font-weight: 500;
 }
 
 .btn-beasiswa {
